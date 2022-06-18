@@ -1,4 +1,7 @@
-import { ButtonProperties } from "../types";
+interface ButtonProperties
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  text: string;
+}
 
 function Button({ text, type }: ButtonProperties) {
   return (

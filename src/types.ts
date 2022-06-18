@@ -1,8 +1,9 @@
 import { FieldError, UseFormRegister, Path } from "react-hook-form";
 
-export interface ButtonProperties
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  text: String;
+export interface GameData {
+  question: string;
+  all_words: string[];
+  good_words: string[];
 }
 
 export interface IFormValues {

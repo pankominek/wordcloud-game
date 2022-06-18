@@ -1,5 +1,12 @@
+import { Routes, Route } from "react-router-dom";
+import Welcome from "./pages/Welcome";
+
 function App() {
-  return <h1>Wordcloud Game</h1>;
+  return (
+    <Routes>
+      <Route path="/" element={<Welcome />} />
+    </Routes>
+  );
 }
 
 export default App;

@@ -1,8 +1,8 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { IFormValues } from "../types";
+import Main from "../layouts/Main";
 import Button from "../components/Button";
 import InputField from "../components/InputField";
-import Main from "../layouts/Main";
-import { IFormValues } from "../types";
 
 function Welcome() {
   const {

@@ -27,10 +27,7 @@ function GameBoard(props: { data: GameData }): JSX.Element {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <form
-      className="flex flex-col items-center"
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
       <fieldset
         disabled={isSubmitted}
         className="border border-black my-4 p-2 rounded flex flex-wrap justify-around"

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import GameBoard from "../components/GameBoard";
 import Header from "../components/Header";
-import Main from "../layouts/Main";
 import { GameData } from "../types";
 
 function Game() {
@@ -72,10 +71,10 @@ function Game() {
   return (
     state.question &&
     state.all_words?.length && (
-      <Main>
+      <>
         <Header text={state.question} />
         <GameBoard data={state} />
-      </Main>
+      </>
     )
   );
 }

@@ -1,6 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IFormValues } from "../types";
-import Main from "../layouts/Main";
 import Button from "../components/Button";
 import InputField from "../components/InputField";
 
@@ -14,8 +13,8 @@ function Welcome() {
   const onSubmit: SubmitHandler<IFormValues> = (data) => console.log(data);
 
   return (
-    <Main>
-      <h1 className="text-3xl text-center mb-5">Wordcloud game</h1>
+    <>
+      <h1 className="text-3xl mb-5">Wordcloud game</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
         <InputField
           label="nickname"
@@ -25,7 +24,7 @@ function Welcome() {
         />
         <Button type="submit" text="play" />
       </form>
-    </Main>
+    </>
   );
 }
 

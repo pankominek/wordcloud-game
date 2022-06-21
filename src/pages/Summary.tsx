@@ -1,11 +1,9 @@
-import Main from "../layouts/Main";
-
 function Summary() {
   const name = "tommy";
   const score = 0 + 1;
 
   return (
-    <Main>
+    <>
       <h2>Congratulations, {name}!</h2>
       <p>
         Your score:
@@ -13,7 +11,7 @@ function Summary() {
           {`${score}  ${score !== 1 ? "points" : "point"}`}
         </span>
       </p>
-    </Main>
+    </>
   );
 }
 

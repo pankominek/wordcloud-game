@@ -62,7 +62,7 @@ function GameBoard(props: { data: GameData }): JSX.Element {
         ))}
       </fieldset>
       {isSubmitted ? (
-        <Link to="/summary">
+        <Link className="mx-auto" to="/summary">
           <Button type="button" text="finish game" />
         </Link>
       ) : (

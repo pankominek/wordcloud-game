@@ -69,13 +69,14 @@ function Game() {
   }, []);
 
   return (
-    state.question &&
-    state.all_words?.length && (
-      <>
-        <Header text={state.question} />
-        <GameBoard data={state} />
-      </>
-    )
+    <>
+      {state.question && state.all_words?.length && (
+        <>
+          <Header text={state.question} />
+          <GameBoard data={state} />
+        </>
+      )}
+    </>
   );
 }
 

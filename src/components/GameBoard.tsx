@@ -1,5 +1,5 @@
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { useProfileState } from "../context/ProfileContext";
 import { GameData } from "../types";
 import Button from "./Button";
@@ -16,7 +16,7 @@ function GameBoard(props: { data: GameData }): JSX.Element {
     register,
     handleSubmit,
     getFieldState,
-    formState: { isSubmitted, dirtyFields, isDirty },
+    formState: { isSubmitted, isDirty },
   } = useForm({
     defaultValues: props.data.all_words.reduce(
       (accumulatedObject, key) => ({
@@ -27,7 +27,7 @@ function GameBoard(props: { data: GameData }): JSX.Element {
     ),
   });
 
-  const onSubmit = (inputs: any) => {
+  const onSubmit: SubmitHandler<StateCheckbox> = (inputs) => {
     const good = props.data.good_words.length;
     const checked = Object.keys(inputs).filter((k) => inputs[k] === true);
     const compatibles = checked.filter((item) =>

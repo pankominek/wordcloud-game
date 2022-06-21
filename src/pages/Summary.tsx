@@ -1,14 +1,17 @@
+import { useProfileState } from "../context/ProfileContext";
+
 function Summary() {
-  const name = "tommy";
-  const score = 0 + 1;
+  const profileState = useProfileState();
 
   return (
     <>
-      <h2>Congratulations, {name}!</h2>
+      <h2>Congratulations, {profileState.profile.name}!</h2>
       <p>
         Your score:
         <span className="text-blue-500 flex justify-center">
-          {`${score}  ${score !== 1 ? "points" : "point"}`}
+          {`${profileState.profile.score}  ${
+            profileState.profile.score !== 1 ? "points" : "point"
+          }`}
         </span>
       </p>
     </>

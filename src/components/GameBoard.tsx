@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useProfileState } from "../context/ProfileContext";
 import { GameData } from "../types";
 import Button from "./Button";
 import CheckStatus from "./CheckStatus";
@@ -9,6 +10,8 @@ interface StateCheckbox {
 }
 
 function GameBoard(props: { data: GameData }): JSX.Element {
+  const profileState = useProfileState();
+
   const {
     register,
     handleSubmit,
@@ -24,7 +27,18 @@ function GameBoard(props: { data: GameData }): JSX.Element {
     ),
   });
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (inputs: any) => {
+    const good = props.data.good_words.length;
+    const checked = Object.keys(inputs).filter((k) => inputs[k] === true);
+    const compatibles = checked.filter((item) =>
+      props.data.good_words.includes(item)
+    ).length;
+
+    const score =
+      2 * compatibles - (checked.length - compatibles + (good - compatibles));
+
+    profileState.addScoreToProfile(score);
+  };
 
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
@@ -33,7 +47,12 @@ function GameBoard(props: { data: GameData }): JSX.Element {
         className="border border-black my-4 p-2 rounded flex flex-wrap justify-around"
       >
         {props.data.all_words.map((item) => (
-          <div key={item} className="flex flex-col p-7 mx-10 text-center">
+          <div
+            key={item}
+            className={`flex flex-col p-7 mx-10 text-center ${
+              isSubmitted && getFieldState(item).isDirty ? "pt-1" : "pt-7"
+            }`}
+          >
             {isSubmitted && getFieldState(item).isDirty && (
               <CheckStatus status={props.data.good_words.includes(item)} />
             )}

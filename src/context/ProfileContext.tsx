@@ -7,6 +7,8 @@ interface UserProfile {
 
 interface ProfileState {
   profile: UserProfile;
+  addNameToProfile: (name: string) => void;
+  addScoreToProfile: (score: number) => void;
 }
 
 export const ProfileStateContext = createContext<ProfileState | null>(null);
@@ -17,11 +19,22 @@ export const ProfileStateContextProvider = ({
   children: ReactNode;
 }) => {
   const [userProfile, setUserProfile] = useState<UserProfile>({
-    name: "Kamil",
+    name: "",
     score: 0,
   });
+
   return (
-    <ProfileStateContext.Provider value={{ profile: userProfile }}>
+    <ProfileStateContext.Provider
+      value={{
+        profile: userProfile,
+        addNameToProfile: (name) => {
+          setUserProfile({ name, score: 0 });
+        },
+        addScoreToProfile: (score) => {
+          setUserProfile((prev) => ({ ...prev, score }));
+        },
+      }}
+    >
       {children}
     </ProfileStateContext.Provider>
   );

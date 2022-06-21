@@ -21,9 +21,12 @@ function Welcome() {
 
   return (
     <>
-      <h1 className="text-3xl mb-5">Wordcloud game</h1>
+      <h1 className="text-3xl lg:text-6xl mb-5">Wordcloud game</h1>
       {profileState.profile.name}
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col lg:w-full"
+      >
         <InputField
           label="nickname"
           placeholder="Enter your nickname here..."
